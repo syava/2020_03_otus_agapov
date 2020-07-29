@@ -15,6 +15,14 @@ public class DIYArrayListTest {
         System.out.println(myNewList);
 //        assertThat(myList, CoreMatchers.hasItems(1));
         //Assert.assertEquals(myList,myNewList);
+    }
+    @Test
+    public void addItemsTest() {
+        DIYArrayList<Integer> list = new DIYArrayList<>(2);
+        list.add(1);
+        list.add(2);
+        list.add(3);
 
+        Assert.assertEquals(list.size(), 3);
     }
 }

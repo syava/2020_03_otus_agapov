@@ -9,13 +9,14 @@ public class Main {
         DIYArrayList<Integer> myList2 = new DIYArrayList<>(30);
         DIYArayListUtils<Integer> Comp = new DIYArayListUtils<>();
 
-
         System.out.println(DIYArayListUtils.staticVar);
 
         System.out.println("Empty list");
         System.out.println(myList1);
-        Collections.addAll(myList1, 1, 7, 3);
-        Collections.addAll(myList2, 4, 4, 4);
+        //Collections.addAll(myList1, 1, 7, 3);
+        //Collections.addAll(myList2, 4, 4, 4);
+        Collections.addAll(myList1, 1, 2, 3, 3, 1, 1, 1, 1, 1);
+        Collections.addAll(myList2, 1, 2, 1, 3, 2, 2, 1, 1, 1);
 
         System.out.println("Original list");
         System.out.println(myList1);

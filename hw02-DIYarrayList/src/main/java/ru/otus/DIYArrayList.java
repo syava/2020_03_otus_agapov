@@ -27,9 +27,21 @@ public class DIYArrayList<T> implements List<T> {
     @Override
     public boolean add(T t) {
         int size = this.size();
+
+        if (size == this.elements.length) {
+            resize();
+        }
         this.elements[size] = t;
 
         return true;
+    }
+
+    private void resize() {
+        int size = this.size();
+        Object[] objects = new Object[size + 1];
+        T[] new_elements = (T[]) objects;
+        System.arraycopy(elements, 0, new_elements, 0, elements.length);
+        elements = new_elements;
     }
 
     @Override
@@ -59,15 +71,8 @@ public class DIYArrayList<T> implements List<T> {
     @Override
     public Object[] toArray() {
         int size = this.size();
-        Object[] myArray = new Object[size];
-        int count = 1;
-        for (T element: elements) {
-            if (element != null) {
-                myArray[count - 1] = (T) element;
-                count++;
-            }
-        }
-        return myArray;
+
+        return Arrays.copyOf(elements, size);
     }
 
 
@@ -78,6 +83,11 @@ public class DIYArrayList<T> implements List<T> {
         if (modCount != expectedModCount)
             throw new ConcurrentModificationException();
         modCount++;
+    }
+
+    @Override
+    public ListIterator<T> listIterator() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -97,7 +107,7 @@ public class DIYArrayList<T> implements List<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
 
@@ -153,11 +163,6 @@ public class DIYArrayList<T> implements List<T> {
 
     @Override
     public int lastIndexOf(Object o) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public ListIterator<T> listIterator() {
         throw new UnsupportedOperationException();
     }
 
