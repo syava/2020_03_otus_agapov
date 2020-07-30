@@ -1,3 +1,4 @@
 rootProject.name = '2020_03_otus_agapov'
 
 include 'hw01-gradle'
+include 'hw03-testFramework'
