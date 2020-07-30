@@ -35,4 +35,15 @@ public class DIYArrayListTest {
 
         Assert.assertEquals(3, list.size());
     }
+
+    @Test
+    public void addNulls() {
+        DIYArrayList<Integer> list = new DIYArrayList<>(2);
+        if (list.add(null)) {
+            // Вроде как null добавилось успешно, размер должен быть 1
+            Assert.assertEquals(1, list.size());
+        } else {
+            Assert.assertEquals(0, list.size());
+        }
+    }
 }

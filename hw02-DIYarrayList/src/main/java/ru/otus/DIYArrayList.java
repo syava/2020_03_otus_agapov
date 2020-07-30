@@ -5,6 +5,8 @@ import java.util.function.Consumer;
 public class DIYArrayList<T> implements List<T> {
     private T[] elements;
 
+    private int size = 0;
+
     private int modCount = 0;
 
     public DIYArrayList(int size) {
@@ -19,29 +21,21 @@ public class DIYArrayList<T> implements List<T> {
 
     @Override
     public int size() {
-        int count = 0;
-        for (T element: this.elements) {
-            if (element != null) {
-                count += 1;
-            }
-        }
-        return count;
+        return size;
     }
 
     @Override
     public boolean add(T t) {
-        int size = this.size();
-
         if (size == this.elements.length) {
             resize();
         }
         this.elements[size] = t;
+        size++;
 
         return true;
     }
 
     private void resize() {
-        int size = this.size();
         Object[] objects = new Object[size + 1];
         T[] new_elements = (T[]) objects;
         System.arraycopy(elements, 0, new_elements, 0, elements.length);
@@ -74,8 +68,6 @@ public class DIYArrayList<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        int size = this.size();
-
         return Arrays.copyOf(elements, size);
     }
 
