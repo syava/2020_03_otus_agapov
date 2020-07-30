@@ -3,13 +3,17 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class DIYArrayList<T> implements List<T> {
-
-    public T[] elements;
+    private T[] elements;
 
     private int modCount = 0;
 
     public DIYArrayList(int size) {
         Object[] objects = new Object[size];
+        this.elements = (T[]) objects;
+    }
+
+    public DIYArrayList() {
+        Object[] objects = {};
         this.elements = (T[]) objects;
     }
 
@@ -87,7 +91,67 @@ public class DIYArrayList<T> implements List<T> {
 
     @Override
     public ListIterator<T> listIterator() {
-        throw new UnsupportedOperationException();
+        return new ListItr();
+    }
+
+    private class Itr implements Iterator<T> {
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
+    }
+
+    private class ListItr extends Itr implements ListIterator<T> {
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return false;
+        }
+
+        @Override
+        public T previous() {
+            return null;
+        }
+
+        @Override
+        public int nextIndex() {
+            return 0;
+        }
+
+        @Override
+        public int previousIndex() {
+            return 0;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public void set(T e) {
+
+        }
+
+        @Override
+        public void add(T e) {
+
+        }
     }
 
     @Override
@@ -175,4 +239,6 @@ public class DIYArrayList<T> implements List<T> {
     public List<T> subList(int fromIndex, int toIndex) {
         throw new UnsupportedOperationException();
     }
+
+
 }

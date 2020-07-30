@@ -23,6 +23,16 @@ public class DIYArrayListTest {
         list.add(2);
         list.add(3);
 
-        Assert.assertEquals(list.size(), 3);
+        Assert.assertEquals(3, list.size());
+    }
+
+    @Test
+    public void addItemsWithoutParamTest() {
+        DIYArrayList<Integer> list = new DIYArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+
+        Assert.assertEquals(3, list.size());
     }
 }
