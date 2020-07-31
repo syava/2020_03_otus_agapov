@@ -3,6 +3,9 @@ package ru.otus;
 import org.junit.Test;
 import org.junit.Assert;
 
+import java.util.Collections;
+import java.util.List;
+
 public class DIYArrayListTest {
     @Test 
     public void testDIYArrayList() {
@@ -45,5 +48,18 @@ public class DIYArrayListTest {
         } else {
             Assert.assertEquals(0, list.size());
         }
+    }
+
+    @Test
+    public void iteratorTest() {
+        List<Integer> dest = new DIYArrayList<>();
+        List<Integer> src = new DIYArrayList<>();
+
+        Collections.addAll(src, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+        Collections.addAll(dest, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+
+        Collections.copy(dest, src);
+
+        Assert.assertArrayEquals(src.toArray(), dest.toArray());
     }
 }

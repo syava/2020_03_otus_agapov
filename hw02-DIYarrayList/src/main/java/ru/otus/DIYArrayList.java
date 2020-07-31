@@ -99,14 +99,24 @@ public class DIYArrayList<T> implements List<T> {
     }
 
     private class ListItr extends Itr implements ListIterator<T> {
-
-        @Override
-        public boolean hasNext() {
-            throw new UnsupportedOperationException();
-        }
+        private int index;
+        private int last = -1;
 
         @Override
         public T next() {
+            int i = index;
+            index = i + 1;
+
+            return (T) elements[last = i];
+        }
+
+        @Override
+        public void set(T e) {
+            DIYArrayList.this.set(last, e);
+        }
+
+        @Override
+        public boolean hasNext() {
             throw new UnsupportedOperationException();
         }
 
@@ -132,11 +142,6 @@ public class DIYArrayList<T> implements List<T> {
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
-        }
-
-        @Override
-        public void set(T e) {
             throw new UnsupportedOperationException();
         }
 
