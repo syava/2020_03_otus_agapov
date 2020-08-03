@@ -1,5 +1,6 @@
 package ru.otus;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +9,7 @@ public class TestFramework {
     public static void main(String[] args) {
     }
 
-    public void methods() {
+    public void methods() throws IllegalAccessException, InvocationTargetException {
         Class<TestClass> clazz = TestClass.class;
 
         Method[] methods = clazz.getDeclaredMethods();
@@ -18,7 +19,7 @@ public class TestFramework {
         ArrayList<Method> testMethods = new ArrayList();
         ArrayList<Method> afterMethods = new ArrayList();
 
-        for(Method method : methods) {
+        for (Method method : methods) {
             if(method.isAnnotationPresent(Before.class)) {
                 beforeMethods.add(method);
             }
@@ -29,5 +30,10 @@ public class TestFramework {
                 afterMethods.add(method);
             }
         }
+
+        for (Method method : beforeMethods) {
+            method.invoke(new TestClass());
+        }
+
     }
 }

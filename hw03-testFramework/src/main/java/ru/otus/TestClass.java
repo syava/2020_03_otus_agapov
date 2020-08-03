@@ -1,19 +1,23 @@
 package ru.otus;
 
 public class TestClass {
-
-        @Before
-        public void printName1() {
-            System.out.println("Name");
+        @After
+        public void afterOne() {
+            System.out.println("AfterOne");
         }
 
         @Test
-        public void printName2() {
-            System.out.println("Name");
+        public void test() {
+            System.out.println("test");
+        }
+
+        @Before
+        public void before() {
+            System.out.println("Before");
         }
 
         @After
-        public void printName3() {
-            System.out.println("Name");
+        public void afterTwo() {
+            System.out.println("AfterTwo");
         }
 }
