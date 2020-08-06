@@ -36,10 +36,10 @@ public class OutOfMemory {
         new OutOfMemory().addToList();
     }
     public void addToList() {
-        for (int i = 0; i < 500000000; i++) {
+        for (int i = 0; i < 100000000; i++) {
             list.add(rd.nextDouble());
             //System.out.println(list);
-            //sleep();
+            sleep(); // use sleep when -Xmx16m
         }
     }
 
