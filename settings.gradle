@@ -2,3 +2,4 @@ rootProject.name = '2020_03_otus_agapov'
 
 include 'hw01-gradle'
 include 'hw02-DIYarrayList'
+include 'hw04-gc'
