@@ -29,18 +29,24 @@ import java.util.Random;
  */
 
 public class OutOfMemory {
-    private static final List<Double> list = new ArrayList<>();
+    private List<Double> list = new ArrayList<>();
     private Random rd = new Random();
 
     public static void main(String[] args) {
         new OutOfMemory().addToList();
     }
     public void addToList() {
-        for (int i = 0; i < 100000000; i++) {
+        long m = System.currentTimeMillis();
+        for (int i = 0; i < 1000000000; i++) {
             list.add(rd.nextDouble());
+            if (list.size() == 100000000) {
+                list.clear();
+            }
             //System.out.println(list);
-            sleep(); // use sleep when -Xmx16m
+            //sleep(); // use sleep when -Xmx16m
         }
+
+        System.out.println(System.currentTimeMillis() - m);
     }
 
     private void sleep() {
